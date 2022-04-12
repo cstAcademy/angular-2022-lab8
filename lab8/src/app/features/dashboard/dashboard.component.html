@@ -7,7 +7,6 @@
     <tr>
       <th>Dog Name</th>
       <th>Age</th>
-      <th>Race</th>
       <th>Owner</th>
       <th>Gender</th>
       <th></th>
@@ -15,11 +14,10 @@
     <tr *ngFor="let dog of dogs">
       <td>{{ dog.name }}</td>
       <td>{{ dog.age }}</td>
-      <td>{{ dog.race }}</td>
       <td>{{ dog.owner }}</td>
-      <td>{{ dog.gender }}</td>
+      <td>{{ genders[dog.gender] }}</td>
       <th>
-        <button mat-icon-button (click)="deleteDog()">
+        <button mat-icon-button (click)="deleteDog(dog)">
           <mat-icon>delete</mat-icon>
         </button>
       </th>

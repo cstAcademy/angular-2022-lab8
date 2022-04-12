@@ -7,36 +7,28 @@ import { Injectable } from '@angular/core';
 export class DogService {
   private dogs: Dog[] = [
     {
-      id: 1,
       name: 'lala',
       age: 10,
-      race: 'race1',
       owner: 'owner',
       gender: Gender.FEMALE,
     },
     {
-      id: 2,
       name: 'lala2',
       age: 10,
-      race: 'race1',
       owner: 'owner',
       gender: Gender.FEMALE,
     },
     {
-      id: 3,
-      name: 'lala',
+      name: 'lala5',
       age: 10,
-      race: 'race1',
       owner: 'owner',
       gender: Gender.FEMALE,
     },
     {
-      id: 4,
-      name: 'lala',
+      name: 'lala3ks',
       age: 10,
-      race: 'race1',
       owner: 'owner',
-      gender: Gender.FEMALE,
+      gender: Gender.MALE,
     },
   ];
 
@@ -48,11 +40,17 @@ export class DogService {
     this.dogs = dogs;
   }
 
-  getDogById(dogId: number): Dog | undefined {
-    return this.dogs.find((dog) => dog.id == dogId);
+  getCertainDog(dog: Dog): Dog | undefined {
+    return this.dogs.find((elem) => elem == dog);
   }
 
-  addNewDog() {
-    //todo
+  addNewDog(dog: Dog) {
+    this.dogs.push(dog);
+    console.log(this.dogs);
+  }
+
+  deleteDog(dog: Dog) {
+    this.dogs = this.dogs.filter((item) => item !== dog);
+    return this.dogs;
   }
 }

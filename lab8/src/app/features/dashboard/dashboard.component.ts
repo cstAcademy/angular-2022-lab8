@@ -1,3 +1,4 @@
+import { Gender } from './../dog.interface';
 import { AddNewComponent } from './../add-new/add-new.component';
 import { DogService } from './../dog.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DashboardComponent implements OnInit {
   dogs: Dog[] = [];
+  genders = Gender;
 
   constructor(private dogService: DogService, public dialog: MatDialog) {}
 
@@ -22,7 +24,7 @@ export class DashboardComponent implements OnInit {
     this.dialog.open(AddNewComponent);
   }
 
-  deleteDog() {
-    //todo
+  deleteDog(dog: Dog) {
+    this.dogs = this.dogService.deleteDog(dog);
   }
 }
