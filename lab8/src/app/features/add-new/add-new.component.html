@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Add New Dog</h2>
+
+<mat-dialog-content class="mat-typography">
+  <p>
+    Learn one way to build applications with Angular and reuse your code and
+    abilities to build apps for any deployment target. For web, mobile web,
+    native mobile and native desktop.
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="closeModal()">Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    (click)="addDog()"
+  >
+    Confirm
+  </button>
+</mat-dialog-actions>
