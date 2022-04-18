@@ -1,8 +1,5 @@
-import { DogService } from './../dog.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Dog } from '../dog.interface';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-new',
@@ -12,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AddNewComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private dogService: DogService, private _snackBar: MatSnackBar) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -27,35 +24,5 @@ export class AddNewComponent implements OnInit {
     });
   }
 
-  addDog() {
-    if (this.form.valid) {
-      const payload: Dog = {
-        name: this.dogName?.value,
-        owner: this.dogOwner?.value,
-        age: this.dogAge?.value,
-        gender: this.dogGender?.value,
-      };
-
-      this.dogService.addNewDog(payload);
-      this._snackBar.open('Dog added successfully!');
-    } else {
-      this._snackBar.open('The form is not valid!');
-    }
-  }
-
-  get dogName() {
-    return this.form.get('dogName');
-  }
-
-  get dogAge() {
-    return this.form.get('dogAge');
-  }
-
-  get dogOwner() {
-    return this.form.get('dogOwner');
-  }
-
-  get dogGender() {
-    return this.form.get('dogGender');
-  }
+  addDog() {}
 }
