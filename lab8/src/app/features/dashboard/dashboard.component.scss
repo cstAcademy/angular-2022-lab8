@@ -1,6 +1,19 @@
 .container{
     margin: 5rem 10rem;
 
+    #header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #search-container{
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    }
+
     button{
         margin-bottom: 1rem;
     }

@@ -3,6 +3,7 @@ export interface Dog {
   age: number;
   owner: string;
   gender: Gender;
+  price: number;
 }
 
 export enum Gender {

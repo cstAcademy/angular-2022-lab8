@@ -1,7 +1,24 @@
 <div class="container">
-  <button mat-raised-button color="primary" (click)="openAddModal()">
-    Add new dog
-  </button>
+  <div id="header">
+    <button mat-raised-button color="primary" (click)="openAddModal()">
+      Add new dog
+    </button>
+
+    <button mat-raised-button color="primary" (click)="sortByAge()">
+      Sort by age
+    </button>
+
+    <div id="search-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Search for a dog</mat-label>
+        <input matInput type="text" [(ngModel)]="searchValue" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="searchDog()">
+        Search
+      </button>
+    </div>
+  </div>
 
   <table *ngIf="dogs.length > 0">
     <tr>
@@ -9,6 +26,7 @@
       <th>Age</th>
       <th>Owner</th>
       <th>Gender</th>
+      <th>Price</th>
       <th></th>
     </tr>
     <tr *ngFor="let dog of dogs">
@@ -16,6 +34,7 @@
       <td>{{ dog.age }}</td>
       <td>{{ dog.owner }}</td>
       <td>{{ genders[dog.gender] }}</td>
+      <td>{{ dog.price }}</td>
       <th>
         <button mat-icon-button (click)="deleteDog(dog)">
           <mat-icon>delete</mat-icon>

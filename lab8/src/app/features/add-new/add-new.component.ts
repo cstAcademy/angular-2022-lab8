@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Dog } from '../dog.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CustomValidators } from '../custom-validator';
 
 @Component({
   selector: 'app-add-new',
@@ -22,8 +23,9 @@ export class AddNewComponent implements OnInit {
     this.form = new FormGroup({
       dogName: new FormControl(null, Validators.required),
       dogAge: new FormControl(null, Validators.required),
-      dogOwner: new FormControl(null, Validators.required),
+      dogOwner: new FormControl(null, [Validators.required, CustomValidators.humanName]),
       dogGender: new FormControl(null, Validators.required),
+      dogPrice: new FormControl(null, [Validators.required, CustomValidators.specificPrice]),
     });
   }
 
@@ -34,6 +36,7 @@ export class AddNewComponent implements OnInit {
         owner: this.dogOwner?.value,
         age: this.dogAge?.value,
         gender: this.dogGender?.value,
+        price: this.dogPrice?.value
       };
 
       this.dogService.addNewDog(payload);
@@ -57,5 +60,9 @@ export class AddNewComponent implements OnInit {
 
   get dogGender() {
     return this.form.get('dogGender');
+  }
+
+  get dogPrice() {
+    return this.form.get('dogPrice');
   }
 }

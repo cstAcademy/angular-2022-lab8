@@ -11,24 +11,31 @@ export class DogService {
       age: 10,
       owner: 'owner',
       gender: Gender.FEMALE,
+      price: 400
     },
     {
       name: 'lala2',
       age: 10,
       owner: 'owner',
       gender: Gender.FEMALE,
+      price: 400
+
     },
     {
       name: 'lala5',
       age: 10,
       owner: 'owner',
       gender: Gender.FEMALE,
+      price: 400
+
     },
     {
       name: 'lala3ks',
       age: 10,
       owner: 'owner',
       gender: Gender.MALE,
+      price: 400
+
     },
   ];
 
@@ -38,6 +45,14 @@ export class DogService {
 
   setDogs(dogs: Dog[]) {
     this.dogs = dogs;
+  }
+
+  sortByAge(): Dog[] {
+    return this.dogs.sort((a, b) => a.age - b.age);
+  }
+
+  searchDog(dogName: string): Dog[]{
+    return this.dogs.filter((item) => item.name.includes(dogName));
   }
 
   getCertainDog(dog: Dog): Dog | undefined {

@@ -33,17 +33,33 @@
         formControlName="dogOwner"
         required
       />
-      <mat-error *ngIf="dogOwner?.invalid">Error!</mat-error>
+      <mat-error *ngIf="dogOwner?.hasError('required')">Field is required!</mat-error>
+      <mat-error *ngIf="dogOwner?.hasError('not-human-name')">The name is not human!</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Select the dog gender</mat-label>
       <mat-select formControlName="dogGender">
-        <mat-option value="1">Female</mat-option>
-        <mat-option value="0">Male</mat-option>
+        <mat-option [value]="1">Female</mat-option>
+        <mat-option [value]="0">Male</mat-option>
       </mat-select>
       <mat-error *ngIf="dogGender?.invalid">Error!</mat-error>
     </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter the dog price</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="dog price"
+        formControlName="dogPrice"
+        required
+      />
+      <mat-error *ngIf="dogPrice?.hasError('required')">Field is required!</mat-error>
+      <mat-error *ngIf="dogPrice?.hasError('not-in-range')">Price should be between 100 and 5000!</mat-error>
+    </mat-form-field>
+
   </form>
 </mat-dialog-content>
 

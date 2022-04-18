@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit {
   dogs: Dog[] = [];
   genders = Gender;
 
+  searchValue: string = '';
+
   constructor(private dogService: DogService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -21,7 +23,15 @@ export class DashboardComponent implements OnInit {
   }
 
   openAddModal() {
-    this.dialog.open(AddNewComponent);
+    this.dialog.open(AddNewComponent, { width: '50vw' });
+  }
+
+  sortByAge() {
+    this.dogs = this.dogService.sortByAge();
+  }
+
+  searchDog() {
+    this.dogs = this.dogService.searchDog(this.searchValue);
   }
 
   deleteDog(dog: Dog) {
