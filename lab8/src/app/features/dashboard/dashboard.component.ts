@@ -36,5 +36,6 @@ export class DashboardComponent implements OnInit {
 
   deleteDog(dog: Dog) {
     this.dogs = this.dogService.deleteDog(dog);
+    console.log('')
   }
 }
